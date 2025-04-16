@@ -1,6 +1,16 @@
 # shelly-vrm-battsoc
-A shelly script to obtain Victron VRM battery SoC via the Victron API and switch a relay on the Shelly 1PM based on the returned SoC.
-Also installs 2 scheduled actions to start and stop the script at specified times on specified days. Once added these schedules can be edited from the Shelly cloud control panel.
+This was created to solve my own use case with an immersion heater and off-grid solar battery power.
+
+This is a Shelly script to obtain Victron VRM battery SoC via the Victron API and switch a relay on the Shelly 1PM based on the returned SoC.
+This can be used to activate an immersion heater, heat a hot-tub etc.
+This script also installs 2 scheduled actions to start and stop the script at specified times on specified days if such scripts do NOT already exist. Once added these schedules can be edited from the Shelly cloud control panel. Should you wish not to install the scheduled events set the *installSchedules* CONFIG variable to *false*.
+
+This script is installed onto the Shelly device and runs from there. There is no requirement therfore for Google Home / Amazon Alexa or other Home Automation systems.
+
+If the script is unable to contact the Victron VRM and obtain the current battery SoC, the script will turn off the relay to prevent floor discharge of the battery. The script will continue to cycle at the specified interval and resume operation according to the rules specified in the CONFIG variables, once a connection is re-established with the VRM portal.
+
+In the event of a script error, the default behaviour is to turn of the Shelly device relay to prevent floor discharge of the battery.
+
 
 ***To obtain a Victron VRM Long-Lived Access Token:***
 -------------------------------------------------------
@@ -15,6 +25,8 @@ Here's a more detailed breakdown:
 3.) Generate a New Token: You'll be able to generate a new API access token from this page.
 
 Ensure you copy the token when presented on screen. The token is only visible once. If you lose or fail to copy the token. You'll need to delete the old one and generate a new token. 
+
+Keep the token secret and secure.
 
 This process allows you to programmatically use the VRM API, which is more secure than using your username and password in each request.
 
