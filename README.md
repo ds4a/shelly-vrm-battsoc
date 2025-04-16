@@ -9,7 +9,7 @@ This script is installed onto the Shelly device and runs from there. There is no
 
 If the script is unable to contact the Victron VRM and obtain the current battery SoC, the script will turn off the relay to prevent floor discharge of the battery. The script will continue to cycle at the specified interval and resume operation according to the rules specified in the CONFIG variables, once a connection is re-established with the VRM portal.
 
-In the event of a script error, the default behaviour is to turn of the Shelly device relay to prevent floor discharge of the battery.
+In the event of a script error, the default behaviour is to turn off the Shelly device relay to prevent floor discharge of the battery.
 
 
 ***To obtain a Victron VRM Long-Lived Access Token:***
