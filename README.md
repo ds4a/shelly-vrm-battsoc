@@ -1,6 +1,6 @@
 # shelly-vrm-battsoc
 A shelly script to obtain Victron VRM battery SoC via the Victron API and switch a relay on the Shelly 1PM based on the returned SoC.
-Also installs 2 scheduled actions to start and stop the script at specided times on specified days.
+Also installs 2 scheduled actions to start and stop the script at specified times on specified days. Once added these schedules can be edited from the Shelly cloud control panel.
 
 ***To obtain a Victron VRM Long-Lived Access Token:***
 -------------------------------------------------------
@@ -16,6 +16,17 @@ Here's a more detailed breakdown:
 
 Ensure you copy the token when presented on screen. The token is only visible once. If you lose or fail to copy the token. You'll need to delete the old one and generate a new token. 
 
-This process allows you to programmatically use the VRM API, which is more secure than using your username and password in each request. 
+This process allows you to programmatically use the VRM API, which is more secure than using your username and password in each request.
 
 
+***To obtain your Victron VRM installation ID***
+------------------------------------------------
+
+To obtain your Victron VRM installation ID, simply login to the Victron VRM online portal in a browser.
+In the address bar of your browser you will see the path to your installation, it will look similar to:
+
+https://vrm.victronenergy.com/installation/NNNNNN/dashboard
+
+NNNNNN represents your VRM installation ID.
+
+You will need to insert the Access Token and Installation ID into the CONFIG section of the script, at the relevant places.
