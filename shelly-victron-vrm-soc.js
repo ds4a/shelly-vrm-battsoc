@@ -50,9 +50,10 @@ function installSchedules(){
       if (countstop === 0) { installstop(); }
     }
   );
+  return;
 }
 
-if (CONFIG.installSchedules){installSchedules();}
+if (CONFIG.installSchedules){try{installSchedules();}catch(err){console.log(err);}finally{};}
 
 function getVRMBattState(){
   Shelly.call(
