@@ -5,7 +5,7 @@ This is a Shelly script to obtain Victron VRM battery SoC via the Victron API an
 This can be used to activate an immersion heater, heat a hot-tub etc.
 This script also installs 2 scheduled actions to start and stop the script at specified times on specified days if such scripts do NOT already exist. Once added these schedules can be edited from the Shelly cloud control panel. Should you wish not to install the scheduled events set the *installSchedules* CONFIG variable to *false*.
 
-This script is installed onto the Shelly device and runs from there. There is no requirement therfore for Google Home / Amazon Alexa or other Home Automation systems.
+This script is installed onto the Shelly device and runs from there. There is no requirement therefore for Google Home / Amazon Alexa or other Home Automation systems.
 
 If the script is unable to contact the Victron VRM and obtain the current battery SoC, the script will turn off the relay to prevent floor discharge of the battery. The script will continue to cycle at the specified interval and resume operation according to the rules specified in the CONFIG variables, once a connection is re-established with the VRM portal.
 
