@@ -24,7 +24,7 @@ function installSchedules(){
   function installstop(){
     Shelly.call(
       'Schedule.Create',
-      {enable: true, timespec: CONFIG.scriptStop, calls:[{method:"Script.Stop", params:{id:scriptid}},]}
+      {enable: true, timespec: CONFIG.scriptStop, calls:[{method:"Script.Stop", params:{id:scriptid}},{"method":"switch.set","params":{"id":0,"on":false}}]}
     );
   }
 
@@ -70,6 +70,7 @@ function getVRMBattState(){
       }
       catch(err) {
         switchoff(err);
+        console.log(err);
       }
       finally {
       }
@@ -90,12 +91,12 @@ function switchon(bsVRM){
         "Switch.Set",
         {id:0,on:true},
         function(){
-          logger('1 -  SoC: ' + bsVRM + ' Switch: ' + getswitchstate());
+          logger({"1":{"SoC": bsVRM,"Switch": getswitchstate()}}); 
         }
       );
     }
     else if (bsVRM >= CONFIG.SOConVal && switchstate == true ){
-      logger('2 -  SoC: ' + bsVRM + ' Switch: ' + switchstate);    
+      logger({"2":{"SoC": bsVRM,"Switch": getswitchstate()}});  
     }
     else if (bsVRM <= CONFIG.SOCoffVal && switchstate == true){
       switchoff('3', bsVRM);
@@ -111,7 +112,7 @@ function switchoff(calledby, bsVRM){
     "Switch.Set",
     {id:0,on:false},
     function(){
-      logger(calledby + '-  SoC: ' + bsVRM + '%' + ' Switch: ' + getswitchstate());
+      logger({calledby:{"SoC": bsVRM,"Switch": getswitchstate()}}); 
     }
   );
 }
