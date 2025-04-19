@@ -91,18 +91,18 @@ function switchon(bsVRM){
         "Switch.Set",
         {id:0,on:true},
         function(){
-          logger({"1":{"SoC": bsVRM,"Switch": getswitchstate()}}); 
+          logger(1, bsVRM);
         }
       );
     }
     else if (bsVRM >= CONFIG.SOConVal && switchstate == true ){
-      logger({"2":{"SoC": bsVRM,"Switch": getswitchstate()}});  
+      logger(2, bsVRM);  
     }
     else if (bsVRM <= CONFIG.SOCoffVal && switchstate == true){
-      switchoff('3', bsVRM);
+      switchoff(3, bsVRM);
     }
     else {
-      switchoff('4', bsVRM);
+      switchoff(4, bsVRM);
     }
   }  
 }
@@ -112,7 +112,8 @@ function switchoff(calledby, bsVRM){
     "Switch.Set",
     {id:0,on:false},
     function(){
-      logger({calledby:{"SoC": bsVRM,"Switch": getswitchstate()}}); 
+       //logger("{Log[{CalledBy:"+calledby+",SoC:"+bsVRM+",Switch:"+getswitchstate()+"]}}");
+       logger(calledby,bsVRM);
     }
   );
 }
@@ -121,8 +122,8 @@ function startTimer(){
   vrmCheckStartTimer = Timer.set(CONFIG.vrmCheckInterval, true, getVRMBattState);
 }
 
-function logger(logdata){
-  console.log(logdata); 
+function logger(calledby,bsVRM){
+  console.log("{CalledBy:"+calledby+",SoC:"+bsVRM+",Switch:"+getswitchstate()+"},");
 }
 
 startTimer();
