@@ -123,7 +123,7 @@ function startTimer(){
 }
 
 function logger(calledby,bsVRM){
-  if(enabledebug){console.log("{CalledBy:"+calledby+",SoC:"+bsVRM+",Switch:"+getswitchstate()+"},");}
+  if(CONFIG.enabledebug){console.log("{CalledBy:"+calledby+",SoC:"+bsVRM+",Switch:"+getswitchstate()+"},");}
   return;
 }
 
