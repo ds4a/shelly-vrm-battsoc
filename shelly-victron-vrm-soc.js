@@ -112,7 +112,6 @@ function switchoff(calledby, bsVRM){
     "Switch.Set",
     {id:0,on:false},
     function(){
-       //logger("{Log[{CalledBy:"+calledby+",SoC:"+bsVRM+",Switch:"+getswitchstate()+"]}}");
        logger(calledby,bsVRM);
     }
   );
@@ -124,6 +123,7 @@ function startTimer(){
 
 function logger(calledby,bsVRM){
   console.log("{CalledBy:"+calledby+",SoC:"+bsVRM+",Switch:"+getswitchstate()+"},");
+  return;
 }
 
 startTimer();
