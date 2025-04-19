@@ -8,7 +8,8 @@ let CONFIG = {
   UnixTime: Math.floor(Date.now() / 1000)-60, //Current Unix time less 5 mins
   scriptStart: '0 0 9 * * SUN,MON,TUE,WED,THU,FRI,SAT', //Created script schedule start times - 9AM SUN-SAT
   scriptStop: '0 0 17 * * SUN,MON,TUE,WED,THU,FRI,SAT', //Created script schedule stop times - 5PM SUN-SAT
-  installSchedules: true //Install schedules - boolean
+  installSchedules: true, //Install schedules - boolean
+  enabledebug: false // Print script info to console
 }
 
 function installSchedules(){
@@ -122,7 +123,7 @@ function startTimer(){
 }
 
 function logger(calledby,bsVRM){
-  console.log("{CalledBy:"+calledby+",SoC:"+bsVRM+",Switch:"+getswitchstate()+"},");
+  if(enabledebug){console.log("{CalledBy:"+calledby+",SoC:"+bsVRM+",Switch:"+getswitchstate()+"},");}
   return;
 }
 
